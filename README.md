@@ -1,1 +1,1 @@
-# dynamic_web
+# Jo Suk Dynamic Web Assignments
