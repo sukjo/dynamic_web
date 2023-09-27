@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./RecipeCard.module.css";
 
 export default function InstructionsList(prop) {
   // props = properties; go from parent to children
@@ -6,9 +7,9 @@ export default function InstructionsList(prop) {
   const { instructions } = prop;
 
   return (
-    <div>
+    <div className={styles.instructionsContainer}>
       <h3>Instructions</h3>
-      <ol>
+      <ol className={styles.instructionsList}>
         {instructions.map((i, index) => (
           <li key={index}>{i}</li>
         ))}
