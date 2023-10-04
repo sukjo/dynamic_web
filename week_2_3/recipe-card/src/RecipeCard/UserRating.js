@@ -15,32 +15,18 @@ export default function UserRating() {
   const [showRemove, setShowRemove] = useState(true);
 
   const handlePlusClick = () => {
-    if (count < 5) {
-      setShowAdd(true);
-      setShowRemove(true);
-      setCount((prevCount) => {
-        return prevCount + 1;
-      });
-      console.log(count);
-    } else if (count == 5) {
-      setShowAdd(false);
-      console.log(count);
-    }
+    setCount((prevCount) => {
+      return prevCount + 1;
+    });
+    console.log(count);
     return;
   };
 
   const handleMinusClick = () => {
-    if (count > 0) {
-      setShowAdd(true);
-      setShowRemove(true);
-      setCount((prevCount) => {
-        return prevCount - 1;
-      });
-      console.log(count);
-    } else if (count == 0) {
-      setShowRemove(false);
-      console.log(count);
-    }
+    setCount((prevCount) => {
+      return prevCount - 1;
+    });
+    console.log(count);
     return;
   };
 
@@ -53,16 +39,16 @@ export default function UserRating() {
           </span>
         );
       })}
-      {showRemove ? (
+      {count !== 0 && ( // if count ≠ 0, then render minus button
         <button className={styles.removeButton} onClick={handleMinusClick}>
           <Remove />
         </button>
-      ) : null}
-      {showAdd ? (
+      )}
+      {count < 5 && ( // if count < 5, then render plus button
         <button className={styles.addButton} onClick={handlePlusClick}>
           <Add />
         </button>
-      ) : null}
+      )}
     </div>
   );
 }
