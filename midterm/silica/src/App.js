@@ -11,19 +11,25 @@ import {
   move,
 } from "react-grid-dnd";
 
+const packListWithIds = PACKET_LIST.map((item) => ({
+  ...item,
+  id: Math.round(Math.random() * 1000),
+}));
+
 function App() {
-  const [gridItems, setGridItems] = useState(PACKET_LIST);
+  const [gridItems, setGridItems] = useState(packListWithIds);
 
-  useEffect(() => {
-    const randomIDs = [...gridItems].map((item) => ({
-      ...item,
-      id: Math.random() * 1000,
-    }));
-    setGridItems(randomIDs);
-    console.log("items have been assigned random IDs");
-  }, []); // empty dependency array ensures that useEffect only runs once upon first render
+  // const packListWithIds = [...gridItems].map((item) => ({
+  //   ...item,
+  //   id: Math.random() * 1000,
+  // }));
 
-  const handleChange = (sourceId, sourceIndex, targetIndex, targetId) => {
+  // useEffect(() => {
+  //   setGridItems(randomIDs);
+  //   console.log("items have been assigned random IDs");
+  // }, []); // empty dependency array ensures that useEffect only runs once upon first render
+
+  const onChange = (sourceId, sourceIndex, targetIndex, targetId) => {
     // console.log(gridItems[8]);
     console.log("Item sourceId :", sourceId); // items (source container ID)
     console.log("Item sourceIndex :", sourceIndex); // 6 (index or position of the source element within its container)
@@ -62,7 +68,7 @@ function App() {
       <div className={styles.watermark}>
         <span>dry goods preservation agents</span>
       </div>
-      <GridContextProvider onChange={handleChange}>
+      <GridContextProvider onChange={onChange}>
         <GridDropZone
           className={styles.mainDropZone}
           id="items" // unique ID used by react-grid-dnd

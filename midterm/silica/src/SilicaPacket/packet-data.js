@@ -1,5 +1,16 @@
 export const PACKET_LIST = [
   {
+    id: "1",
+    imgSrc: require("../assets/a.png"),
+    imgAlt: "broken image link icon",
+    prose: [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "Nulla quas eos quibusdam esse ipsum, incidunt necessitatibus porro!",
+      "Nemo at modi, cumque, iste nam accusantium ipsam accusamus in, maiores atque ut.",
+    ], // map these out
+  },
+  {
+    id: "2",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -9,15 +20,7 @@ export const PACKET_LIST = [
     ],
   },
   {
-    imgSrc: require("../assets/a.png"),
-    imgAlt: "broken image link icon",
-    prose: [
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "Nulla quas eos quibusdam esse ipsum, incidunt necessitatibus porro!",
-      "Nemo at modi, cumque, iste nam accusantium ipsam accusamus in, maiores atque ut.",
-    ],
-  },
-  {
+    id: "3",
     imgSrc: require("../assets/b.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -27,6 +30,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "4",
     imgSrc: require("../assets/c.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -36,6 +40,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "5",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -45,6 +50,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "6",
     imgSrc: require("../assets/b.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -54,6 +60,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "7",
     imgSrc: require("../assets/c.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -63,6 +70,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "8",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -72,6 +80,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "9",
     imgSrc: require("../assets/b.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -81,6 +90,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "10",
     imgSrc: require("../assets/c.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -90,6 +100,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "11",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -99,6 +110,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "12",
     imgSrc: require("../assets/b.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -108,6 +120,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "13",
     imgSrc: require("../assets/c.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -117,6 +130,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "14",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -126,6 +140,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "15",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -135,6 +150,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "16",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -144,6 +160,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "17",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -153,6 +170,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "18",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -162,6 +180,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "19",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -171,6 +190,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "20",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -180,6 +200,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "21",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -189,6 +210,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "22",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -198,6 +220,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "23",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -207,6 +230,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "24",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -216,6 +240,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "25",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -225,6 +250,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "26",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
@@ -234,6 +260,7 @@ export const PACKET_LIST = [
     ],
   },
   {
+    id: "27",
     imgSrc: require("../assets/a.png"),
     imgAlt: "broken image link icon",
     prose: [
