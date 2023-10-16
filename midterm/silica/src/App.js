@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={styles.container}>
       <div className={styles.watermark}>
-        <span>silica packet shop</span>
+        <span>dry goods preservation agents</span>
       </div>
       <GridContextProvider onChange={handleChange}>
         <GridDropZone

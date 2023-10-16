@@ -12,10 +12,10 @@
   position: absolute;
   z-index: -1;
 
-  color: red;
+  color: orange;
   text-align: center;
 
-  filter: blur(5px);
+  filter: blur(15px);
   transform: translateZ(-5px) scale(2.5);
 
   & span {
@@ -33,12 +33,12 @@
 .gridItem {
   position: relative;
   height: 250px;
-  border: 1px solid blue;
+  border: 1px solid royalblue;
   border-radius: 10px;
   align-items: center;
-  color: blue;
+  color: royalblue;
 
-  /* background-color: blue; */
+  /* background-color: royalblue; */
 
   &:hover {
     cursor: grab;
