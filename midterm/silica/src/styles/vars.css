@@ -1,4 +1,6 @@
 :root {
+  --ff-roc: roc-grotesk-extrawide, sans-serif;
+  --ff-ballet: ballet-variable, sans-serif;
   --ff-serif: "Times New Roman", Times, serif;
   --ff-mono: monospace;
 }

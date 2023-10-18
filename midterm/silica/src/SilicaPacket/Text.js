@@ -2,15 +2,20 @@ import React from "react";
 import styles from "./SilicaPacket.module.css";
 
 export default function Text(prop) {
-  const { proses } = prop;
+  const { caption } = prop;
 
   return (
     <div className={styles.textContainer}>
-      {proses.map((prose, i) => (
-        <>
-          <p className={styles.prose}>{prose}</p>
-        </>
-      ))}
+      <p className={styles.caption}>{caption}</p>
     </div>
   );
 }
+
+// import { generateUID } from "../utils.js";
+// {
+//   proses.map((prose) => (
+//     <p className={styles.prose} key={generateUID()}>
+//       {prose}
+//     </p>
+//   ));
+// }

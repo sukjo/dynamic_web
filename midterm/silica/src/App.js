@@ -8,83 +8,97 @@ import {
   GridDropZone,
   GridItem,
   swap,
-  move,
 } from "react-grid-dnd";
-
-const packListWithIds = PACKET_LIST.map((item) => ({
-  ...item,
-  id: Math.round(Math.random() * 1000),
-}));
+import { generateUID } from "./utils.js";
 
 function App() {
-  const [gridItems, setGridItems] = useState(packListWithIds);
+  const [gridItems, setGridItems] = useState([]);
 
-  // const packListWithIds = [...gridItems].map((item) => ({
-  //   ...item,
-  //   id: Math.random() * 1000,
-  // }));
+  useEffect(() => {
+    const shuffledGridItems = [...PACKET_LIST, ...PACKET_LIST]
+      .sort(() => Math.random() - 0.5)
+      .map((item) => ({ ...item, id: generateUID() }));
+    setGridItems(shuffledGridItems);
+    console.log("items have been shuffled");
+  }, []);
 
-  // useEffect(() => {
-  //   setGridItems(randomIDs);
-  //   console.log("items have been assigned random IDs");
-  // }, []); // empty dependency array ensures that useEffect only runs once upon first render
+  const handleChange = (sourceId, sourceIndex, targetIndex, targetId) => {
+    const result = swap(gridItems, sourceIndex, targetIndex);
+    setGridItems(result);
+    console.log(`items ${sourceIndex} and ${targetIndex} have been swapped`);
+  };
 
-  const onChange = (sourceId, sourceIndex, targetIndex, targetId) => {
-    // console.log(gridItems[8]);
-    console.log("Item sourceId :", sourceId); // items (source container ID)
-    console.log("Item sourceIndex :", sourceIndex); // 6 (index or position of the source element within its container)
-    console.log("Item targetIndex :", targetIndex); // 5 (the index or position where the source element will be dropped)
-    console.log("Item targetId :", targetId); // undefined (unique identifier of the target container)
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
-    // if you are dropping the item onto another container
-    if (targetId) {
-      const result = move(
-        gridItems[sourceId],
-        gridItems[targetId],
-        sourceIndex,
-        targetIndex
-      );
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
 
-      return setGridItems({
-        ...gridItems,
-        [sourceId]: result[0],
-        [targetId]: result[1],
-      });
+    // Add a window resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const getResponsiveGridStyle = (size) => {
+    switch (true) {
+      case size < 500:
+        return 2;
+      case size < 600:
+        return 3;
+      case size < 900:
+        return 4;
+      default:
+        return 5;
     }
-    console.log("items have been swapped");
+  };
 
-    const result = swap(gridItems[sourceId], sourceIndex, targetIndex);
-    return setGridItems({
-      ...gridItems,
-      [sourceId]: result,
-    });
+  const responsiveGridStyle = getResponsiveGridStyle(windowSize.width);
 
-    console.log("gridItems[sourceId] :", gridItems[sourceId]); // undefined
-    console.log("gridItems[targetId] :", gridItems[targetId]); // whole blob
+  const handleDoubleClick = () => {
+    // build on this in next step
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.watermark}>
-        <span>dry goods preservation agents</span>
+    <>
+      <div className={styles.titleContainer}>
+        <h1>⊛ Dry Goods Preservation Agents</h1>
       </div>
-      <GridContextProvider onChange={onChange}>
-        <GridDropZone
-          className={styles.mainDropZone}
-          id="items" // unique ID used by react-grid-dnd
-          boxesPerRow={4}
-          rowHeight={250}
-          style={{ height: 250 * Math.ceil(gridItems.length / 4) }}
-        >
-          {gridItems.map((item) => (
-            <GridItem className={styles.gridItem} key={item.id}>
-              <SilicaPacket packet={item} />
-            </GridItem>
-          ))}
-        </GridDropZone>
-      </GridContextProvider>
-    </div>
+      <div className={styles.packetContainer}>
+        <div className={styles.watermark}>
+          <span>have a good day</span>
+        </div>
+        <GridContextProvider onChange={handleChange}>
+          <GridDropZone
+            className={styles.mainDropZone}
+            id="items" // unique ID used by react-grid-dnd
+            boxesPerRow={responsiveGridStyle}
+            rowHeight={250}
+            style={{ height: 250 * Math.ceil(gridItems.length / 4) }}
+          >
+            {gridItems.map((item) => (
+              <GridItem
+                className={styles.gridItem}
+                key={item.id}
+                ondblclick={handleDoubleClick}
+              >
+                <SilicaPacket packet={item} />
+              </GridItem>
+            ))}
+          </GridDropZone>
+        </GridContextProvider>
+      </div>
+    </>
   );
 }
 
 export default App;
+
+// <GridItem className={styles.gridItem} key={generateUID()}>
