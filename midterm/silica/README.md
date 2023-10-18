@@ -53,6 +53,7 @@ Some examples I'm working off of:
 - You [cannot](https://stackoverflow.com/questions/55137072/react-items-map-is-not-a-function) `.map` through an object, only an array. To iterate through an object, one must use `Object.keys(items).map(...)`.
 - You cannot use an object as a key, otherwise React will stringify the object and use it as a “hash”.
 - Not sure if this is recommended, but instead of using an `onLoad` function (like below) to set randomized IDs for each packet, I used `useEffect` with an empty array so that it [only ran once](https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once) upon first render.
+
   ```jsx
   const randomizeItems = () => {
       const randomizedItems = [...gridItems]
@@ -66,37 +67,16 @@ Some examples I'm working off of:
 
   <GridContextProvider onLoad={randomizeItems} onChange={handleChange}>
   ```
+
 - My `useEffect` with an empty array (basically like an `onLoad` function) was firing twice upon rendering. To solve this, I needed to comment out `<React.StrictMode>` in the `src/index.js` because React StrictMode renders components twice on the dev server (source: https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar).
 - The above change also resolved another issue—initially the packets divs were not moving along with the cursor upon drag. After commenting out StrictMode, the packet movements animated perfectly.
--
 
-```jsx
-useEffect(() => {
-  shuffleGridItems(PACKET_LIST);
-  console.log("items have been shuffled");
-}, []);
+## Resources
 
-const shuffleGridItems = (arr) => {
-  const shuffledGridItems = [...arr];
-  for (let i = shuffledGridItems.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledGridItems[i], shuffledGridItems[j]] = [
-      shuffledGridItems[j],
-      shuffledGridItems[i],
-    ];
-  }
-  console.log(shuffledGridItems);
-  return shuffledGridItems;
-};
-```
+Class examples
 
-```jsx
-useEffect(() => {
-  const shuffledGridItems = [...PACKET_LIST]
-    .sort(() => Math.random() - 0.5)
-    .map((item) => ({ ...item, id: generateUID() }));
-  setGridItems(shuffledGridItems);
-  console.log("items have been shuffled");
-  console.log(shuffledGridItems);
-}, []);
-```
+https://github.com/bmcmahen/react-grid-dnd/issues/43
+
+https://stackoverflow.com/questions/62774907/react-how-can-i-call-a-function-when-a-component-has-loaded
+
+ChatGPT
