@@ -1,0 +1,75 @@
+@import "../styles/global.css";
+@import "../styles/vars.css";
+
+.modal {
+  width: 50vw;
+  height: 50vh;
+}
+
+.modalContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalOverlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -5;
+}
+
+.modalWindow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.example-img {
+  width: 60px;
+  height: auto;
+  animation: float 2s ease-in-out infinite;
+}
+
+.menuContainer {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.menuLink {
+  padding: var(--unipadding);
+}
+
+.activeLink {
+  padding: var(--unipadding);
+  color: red;
+}
+/* could change this styling and the way it is called to be more elegant */
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
