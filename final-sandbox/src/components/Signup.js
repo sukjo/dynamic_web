@@ -29,7 +29,7 @@ export default function Signup({ onModalClick, onLoginClick }) {
 
   return (
     <Modal onModalClick={onModalClick}>
-      <h1>Welcome to Curio Cabinet</h1>
+      <h1>Welcome</h1>
       <p>
         To browse the collection, please create a login and contribute a curio
         of your choice.

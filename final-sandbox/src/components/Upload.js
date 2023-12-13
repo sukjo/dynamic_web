@@ -90,13 +90,7 @@ export default function Upload({ onModalClick }) {
           description: "",
         }}
         validate={validate}
-        onSubmit={(values) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-          }, 1000);
-
-          // onFormSubmit(values);
-        }}
+        onSubmit={{ onFormSubmit }}
       >
         <Form className={formContainerCX}>
           <p>

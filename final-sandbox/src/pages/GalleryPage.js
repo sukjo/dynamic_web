@@ -83,10 +83,10 @@ export default function Gallery({ isModalOpen }) {
   //   );
 
   return (
-    <>
+    <div className={galleryPageCX}>
       {imageGallery.map((url) => {
         return <img src={url} />;
-      })}
-    </>
+      })}{" "}
+    </div>
   );
 }
