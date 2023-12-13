@@ -1,0 +1,44 @@
+@import "../styles/global.css";
+@import "../styles/vars.css";
+
+.homePage,
+.galleryPage,
+.aboutPage {
+  width: calc(100vw - var(--unipadding));
+  height: 100vh;
+  overflow: auto;
+  margin: var(--unipadding);
+}
+
+.homePage {
+}
+
+.galleryPage {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.75s ease-in-out;
+}
+
+.aboutPage {
+}
+
+.blurred {
+  filter: blur(15px);
+}
+
+img {
+  width: 100px;
+  height: auto;
+}
+
+.dropZone {
+  width: 100%;
+  height: 100vh;
+}
+
+.gridItem {
+  position: relative;
+  height: 250px;
+  align-items: center;
+  border: 2px solid yellow;
+}

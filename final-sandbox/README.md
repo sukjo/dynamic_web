@@ -1,8 +1,9 @@
-# 12.12 coding lab
+# Final Project (WIP)
 
-Main questions:
+A collective image gallery made with React, react-router-dom, react-grid-dnd, Formik, and Firebase.
 
-1. How do I convert signup and login pages to modals according to this tutorial:
-   [https://blog.logrocket.com/building-react-modal-module-with-react-router/](https://blog.logrocket.com/building-react-modal-module-with-react-router/)
-2. how can i move RouterProvider to App.js so index.js remains clean?
-3. if possible, how to update field value for Formik input field in upload.js?
+### 12.13 Status
+
+- Can't get upload form to work successfully (I suspect the issue is Formik rather than Firebase), so I'm using images uploaded directly to backend for demonstration purposes.
+- Need to connect Firestore Database so I can collect metadata on user-uploaded images.
+- Need to add more styling and animation, but intentionally did not use a UI library because I like using vanilla CSS.

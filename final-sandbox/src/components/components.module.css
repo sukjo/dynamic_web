@@ -19,7 +19,8 @@
 .modalOverlay {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--smoky-black);
+  opacity: 0.2;
   z-index: -5;
 }
 
@@ -29,6 +30,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
+  border-radius: 5%;
   background-color: #fff;
 }
 
@@ -36,31 +38,96 @@
   display: none;
 }
 
-.example-img {
-  width: 60px;
+.imageContainer {
+  /* height: 100vh; */
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  border: 2px dotted red;
+}
+
+.image {
+  width: auto;
+  height: calc(100% - 2rem);
+  margin: 1rem auto;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.exampleImg {
+  width: 100px;
   height: auto;
   animation: float 2s ease-in-out infinite;
 }
 
 .menuContainer {
   position: fixed;
+  right: 0px;
   bottom: 0px;
-  width: 100vw;
+  width: 25vw;
+  height: 25vh;
+  margin: var(--unipadding);
+  z-index: 100;
 
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .menuLink {
-  padding: var(--unipadding);
+  padding: 0.5rem;
+  color: whitesmoke;
+  font-family: var(--ff-selectricmono);
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: right;
+
+  & :hover {
+    cursor: pointer;
+  }
 }
 
 .activeLink {
-  padding: var(--unipadding);
-  color: red;
+  animation: glow 2s ease-in-out infinite;
 }
 /* could change this styling and the way it is called to be more elegant */
+
+a {
+  text-decoration: none;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  padding: var(--unipadding);
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    padding: 1rem;
+  }
+}
+
+.errorMessage {
+  font-style: italic;
+  color: var(--chefchaouen-blue);
+  padding-top: 0rem;
+}
+
+.uploadButton {
+  border: 1px solid var(--smoky-black);
+}
 
 @keyframes float {
   0% {
@@ -71,5 +138,17 @@
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0px 0px 0px var(--chefchaouen-blue);
+  }
+  50% {
+    text-shadow: 0px 0px 20px var(--chefchaouen-blue);
+  }
+  100% {
+    text-shadow: 0px 0px 0px var(--chefchaouen-blue);
   }
 }

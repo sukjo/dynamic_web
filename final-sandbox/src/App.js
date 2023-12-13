@@ -1,15 +1,37 @@
-import { Outlet } from "react-router-dom";
-import Menu from "./components/Menu";
-import styles from "./components/components.module.css";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+import { useState } from "react";
+
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import GalleryPage from "./pages/GalleryPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
-  return (
-    <div className="App">
-      <Menu />
-      <Outlet />
-      {/* An <Outlet> should be used in parent route elements to render their child route elements.  */}
-    </div>
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const modalState = (state) => {
+    setIsModalOpen(state);
+  };
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<HomePage onModalState={modalState} />}>
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route
+          path="gallery"
+          element={<GalleryPage isModalOpen={isModalOpen} />}
+        />
+      </Route>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -7,9 +7,15 @@
 body {
   width: 100vw;
   height: 100vh;
+  background-color: var(--beaver);
 }
 
 h1,
 p {
-  font-family: var(--ff-bonanova);
+  font-family: var(--ff-selectricmono);
+  color: white;
+}
+
+p {
+  font-size: 1.25rem;
 }

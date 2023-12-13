@@ -1,24 +1,39 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { db } from "../lib/firebase";
-// import cx from "classnames";
+import cx from "classnames";
 import styles from "./components.module.css";
 import { storage } from "../lib/firebase";
-import { ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
+import Modal from "./Modal";
 
 // export default function Upload({ onFileUpload, onFormSubmit }) {
-export default function Upload({}) {
+export default function Upload({ onModalClick }) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const formContainerCX = cx(styles.formContainer);
 
   const onFormSubmit = (values) => {
     //   alert(JSON.stringify(values, null, 2));
     //   onFileUpload(values);
 
-    if (selectedFile == null) return;
-    const imageRef = ref(storage, `images/${selectedFile.name + v4()}`);
-    uploadBytes(imageRef, selectedFile).then(() => {
+    // if (values.file) {
+    //   console.log("your file is ", values.file);
+    // }
+
+    // if (selectedFile == null) return;
+    // const imageRef = ref(storage, `images/${selectedFile.name + v4()}`);
+    // uploadBytes(imageRef, selectedFile).then(() => {
+    //   alert("Image uploaded!");
+    // });
+
+    if (!values.file == null) return;
+    const imageRef = ref(storage, `images/${values.file.name + v4()}`);
+    uploadBytes(imageRef, values.file).then((snapshot) => {
       alert("Image uploaded!");
+      // figure out how to reference the same state in HomePage:
+      // getDownloadURL(snapshot.ref).then((url) => {
+      //   setImageGallery((prev) => [...prev, url]);
+      // });
     });
   };
 
@@ -66,7 +81,7 @@ export default function Upload({}) {
   };
 
   return (
-    <div>
+    <Modal onModalClick={onModalClick}>
       <Formik
         initialValues={{
           file: "",
@@ -76,20 +91,32 @@ export default function Upload({}) {
         }}
         validate={validate}
         onSubmit={(values) => {
-          onFormSubmit(values);
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+          }, 1000);
+
+          // onFormSubmit(values);
         }}
       >
-        <Form>
+        <Form className={formContainerCX}>
+          <p>
+            The curio must be in a PNG file with a transparent background, like
+            this:
+          </p>
+          <img
+            src="https://www.pngmart.com/files/5/Acorn-Squash-PNG-Transparent-Image.png"
+            className={styles.exampleImg}
+            alt="PNG file of a fruit with a transparent background"
+          ></img>
           <label htmlFor="file">File</label>
-
           <Field
             id="file"
             name="file"
             type="file"
             onChange={(ev) => {
-              //   setFieldValue("file", ev.currentTarget.files[0].name);
+              // setFieldValue("file", ev.currentTarget.files[0]);
               setSelectedFile(ev.currentTarget.files[0]);
-              console.log("file selected: ", selectedFile);
+              console.log("selectedFile: ", selectedFile);
             }}
             // onChange={(ev) => {
             // }}
@@ -101,21 +128,38 @@ export default function Upload({}) {
             //   });
             // }}
           ></Field>
-
-          <ErrorMessage name="file" component="div" />
+          <ErrorMessage
+            className={styles.errorMessage}
+            name="file"
+            component="div"
+          />
           <label htmlFor="title">Title</label>
           <Field id="title" name="title" type="text" />
-          <ErrorMessage name="title" component="div" />
+          <ErrorMessage
+            className={styles.errorMessage}
+            name="title"
+            component="div"
+          />
           <label htmlFor="author">Author</label>
           <Field id="author" name="author" type="text" />
-          <ErrorMessage name="author" component="div" />
+          <ErrorMessage
+            className={styles.errorMessage}
+            name="author"
+            component="div"
+          />
           <label htmlFor="description">Description</label>
           <Field id="description" name="description" type="text" />
-          <ErrorMessage name="description" component="div" />
+          <ErrorMessage
+            className={styles.errorMessage}
+            name="description"
+            component="div"
+          />
           {/* <button onClick={handleFileUpload}>upload</button> */}
-          <button type="submit">Submit</button>
+          <button className={styles.uploadButton} type="submit">
+            Upload
+          </button>
         </Form>
       </Formik>
-    </div>
+    </Modal>
   );
 }

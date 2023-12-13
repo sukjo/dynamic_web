@@ -1,29 +1,23 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import cx from "classnames";
 import styles from "./components.module.css";
 
-export default function Menu() {
+export default function Menu({ handleLogout, openUpload }) {
   const menuLinkCX = cx(styles.menuLink);
-  const activeLinkCX = cx(styles.activeLink);
+  const activeLinkCX = cx(styles.activeLink, styles.menuLink);
   const menuContainerCX = cx(styles.menuContainer);
-
-  let location = useLocation();
 
   return (
     <div className={menuContainerCX}>
       <NavLink
         className={({ isActive }) => (isActive ? activeLinkCX : menuLinkCX)}
-        to="/"
+        to="/gallery"
       >
-        Home
+        Cabinet
       </NavLink>
-      <NavLink
-        className={({ isActive }) => (isActive ? activeLinkCX : menuLinkCX)}
-        to="/upload"
-        state={{ previousLocation: location }}
-      >
+      <button className={menuLinkCX} onClick={openUpload}>
         Upload
-      </NavLink>
+      </button>
       <NavLink
         className={({ isActive }) => (isActive ? activeLinkCX : menuLinkCX)}
         to="/profile"
@@ -36,6 +30,9 @@ export default function Menu() {
       >
         About
       </NavLink>
+      <button className={menuLinkCX} onClick={handleLogout}>
+        Log out
+      </button>
     </div>
   );
 }

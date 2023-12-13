@@ -1,20 +1,19 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 
-export default function LoginModal() {
+export default function Signup({ onModalClick, onLoginClick }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // hook from React Router DOM
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
@@ -22,16 +21,20 @@ export default function LoginModal() {
       const user = userCredential.user;
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/");
+      navigate("/gallery");
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <Modal>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit} className="login-form">
+    <Modal onModalClick={onModalClick}>
+      <h1>Welcome to Curio Cabinet</h1>
+      <p>
+        To browse the collection, please create a login and contribute a curio
+        of your choice.
+      </p>
+      <form onSubmit={handleSubmit} className="signup-form">
         <input
           type="email"
           placeholder="Your email"
@@ -46,13 +49,13 @@ export default function LoginModal() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="login-button">
-          Log in
+        <button type="submit" className="signup-button">
+          Sign up
         </button>
+        <p>
+          Been here before? <button onClick={onLoginClick}>Login</button>
+        </p>
       </form>
-      <p>
-        Need to Signup? <Link to="/signup">Create Account</Link>
-      </p>
     </Modal>
   );
 }
