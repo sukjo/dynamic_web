@@ -1,0 +1,222 @@
+@import "../styles/global.css";
+@import "../styles/vars.css";
+
+/* -------------------------------------------------------------------------- */
+/*                                    MODAL                                   */
+/* -------------------------------------------------------------------------- */
+
+.modal {
+  width: 50vw;
+  height: 50vh;
+}
+
+.modalContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalOverlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--smoky-black);
+  opacity: 0.2;
+  z-index: -5;
+}
+
+.modalWindow {
+  position: fixed;
+  /* top: 0px;
+  left: 0px; */
+  /* margin: 0 auto; */
+  width: 65%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  /* top: calc(50% + var(--unipadding));
+  left: calc(50% + var(--unipadding)); */
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: ivory;
+
+  & p,
+  h1,
+  button {
+    color: var(--smoky-black);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    IMAGE                                   */
+/* -------------------------------------------------------------------------- */
+
+.imageContainer {
+  /* height: 100vh; */
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  border: 2px dotted red;
+}
+
+.image {
+  width: auto;
+  height: calc(100% - 2rem);
+  margin: 1rem auto;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    MENU                                    */
+/* -------------------------------------------------------------------------- */
+
+.menuContainer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 25vh;
+  margin: 0 auto;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuLink {
+  padding: 0.5rem;
+  width: 8rem;
+  font-family: var(--ff-selectricmono);
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: var(--smoky-black);
+
+  border-top: 3px solid rgb(236, 235, 229);
+  border-right: 3px solid rgb(196, 194, 188);
+  border-bottom: 3px solid rgb(175, 173, 168);
+  border-left: 3px solid rgb(234, 232, 226);
+
+  & :hover {
+    cursor: pointer;
+  }
+
+  & :visited {
+    color: var(--smoky-black);
+  }
+}
+
+.activeLink {
+  background-color: rgb(236, 235, 229);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    FORM                                    */
+/* -------------------------------------------------------------------------- */
+
+input[type="Submit"],
+input[type="reset"],
+input[type="file"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & label {
+    text-align: left;
+  }
+
+  & > * {
+    padding: 1rem;
+  }
+}
+
+.exampleImg {
+  width: 100px;
+  height: auto;
+  animation: float 2s ease-in-out infinite;
+}
+
+.fileUpload {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+
+  & input {
+    margin: 0 auto 0 0;
+  }
+
+  & .thumbnail {
+    margin: 0 0 0 auto;
+    width: 50px;
+    height: auto;
+    height: auto;
+  }
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+
+  & label {
+    margin: 0 auto 0 0;
+  }
+
+  & .errorMessage {
+    color: red;
+    margin: 0 0 0 auto;
+  }
+}
+
+.uploadButton {
+  border: 1px solid var(--smoky-black);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  ANIMATION                                 */
+/* -------------------------------------------------------------------------- */
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* @keyframes glow {
+  0% {
+    text-shadow: 0px 0px 0px var(--chefchaouen-blue);
+  }
+  50% {
+    text-shadow: 0px 0px 20px var(--chefchaouen-blue);
+  }
+  100% {
+    text-shadow: 0px 0px 0px var(--chefchaouen-blue);
+  }
+} */

@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: ivory;
+  /* overflow: hidden; */
+}
+
+h1,
+h2,
+h3,
+button {
+  font-family: var(--ff-selectricmono);
+  color: var(--smoky-black);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+label,
+p {
+  font-family: var(--ff-selectricroman);
+  font-size: 1rem;
+  color: var(--smoky-black);
+}
+
+a,
+a:active,
+a:visited {
+  color: var(--smoky-black);
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-family: var(--ff-selectricroman);
+}
+
+input {
+  font-family: var(--ff-selectricroman);
+  width: 80%;
+  background: transparent;
+  border-top: 3px inset solid rgb(236, 235, 229);
+  border-right: 3px inset solid rgb(196, 194, 188);
+  border-bottom: 3px inset solid rgb(175, 173, 168);
+  border-left: 3px inset solid rgb(234, 232, 226);
+}

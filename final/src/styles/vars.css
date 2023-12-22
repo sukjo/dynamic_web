@@ -1,0 +1,23 @@
+:root {
+  font-size: 14px;
+  --ff-bonanova: "Bona Nova", serif;
+  --ff-selectricmono: "SelectricMono", serif;
+  --ff-selectricroman: "SelectricRoman", serif;
+  --unipadding: 2rem;
+
+  --smoky-black: #12100eff;
+  --chefchaouen-blue: #5386e4ff;
+  --coyote: #786452ff;
+  --beaver: #a5907eff;
+  --celadon: #8fd694ff;
+}
+
+@font-face {
+  font-family: SelectricMono;
+  src: url("../assets/SelectricMono.otf");
+}
+
+@font-face {
+  font-family: SelectricRoman;
+  src: url("../assets/SelectricRoman.otf");
+}
